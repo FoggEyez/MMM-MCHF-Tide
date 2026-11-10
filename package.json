@@ -1,0 +1,29 @@
+{
+  "name": "mmm-mischiefeconomyticker",
+  "version": "0.1.0",
+  "description": "A configurable ticker of official US economic releases from FRED.",
+  "license": "MIT",
+  "author": "FoggEyez",
+  "keywords": [
+    "magicmirror",
+    "magicmirror-module",
+    "mischief",
+    "economy",
+    "finance",
+    "ticker"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FoggEyez/MMM-MischiefEconomyTicker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FoggEyez/MMM-MischiefEconomyTicker/issues"
+  },
+  "homepage": "https://github.com/FoggEyez/MMM-MischiefEconomyTicker#readme",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.cjs"
+  }
+}

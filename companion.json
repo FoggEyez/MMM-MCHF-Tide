@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "module": "MMM-MischiefEconomyTicker",
+  "title": "Mischief Economy Ticker",
+  "recommendedPosition": "bottom_bar",
+  "singleInstance": true,
+  "requires": [
+    "python3"
+  ],
+  "notes": "All supported settings are literal defaults in the module entry. No companion is required. This manifest documents the contract; current MMM-Config discovers defaults from JavaScript.",
+  "supportedSettings": [
+    "scrollSeconds",
+    "showPeriods",
+    "placement",
+    "panelWidth",
+    "horizontalMargin",
+    "verticalMargin",
+    "offsetX",
+    "offsetY",
+    "textSize",
+    "backgroundOpacity"
+  ]
+}

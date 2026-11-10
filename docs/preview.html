@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><title>MMM-MischiefEconomyTicker preview</title><style>html,body{margin:0;background:#060b08;color:#d9e8df;font-family:Arial,sans-serif}body{height:740px}header{position:relative;z-index:50;padding:38px 48px;background:linear-gradient(#060b08,transparent)}small{color:#a4beac;letter-spacing:2px}h1{font-size:30px;font-weight:500}p{color:#a4beac;max-width:900px}.demo{color:#e5ca82}main{position:relative;z-index:5;display:flex;justify-content:center;padding:35px 48px}.green{color:#88c7a0}.yellow{color:#e5ca82}.red{color:#e29288}#anchors[hidden]{display:none}#anchors{display:flex;gap:80px;position:relative;z-index:2;margin:20px 90px}#anchors section{width:300px;height:110px;border:1px solid #3d5246;border-radius:8px;padding:25px;background:#102018}#error{position:relative;z-index:100;color:#f88;white-space:pre-wrap}.quiet-sky{z-index:0!important}</style></head><body><header><small>MIRROR MISCHIEF · MAGICMIRROR² MODULES</small><h1>MMM-MischiefEconomyTicker</h1><p class="demo">ISOLATED RENDER PREVIEW · Network, health and economic values are synthetic demo data.</p><p>Install independently. Customize through Mirror Mischief or your MagicMirror² configuration.</p></header><main><div id="preview-host"></div></main><div id="anchors" hidden><section class="weather"><h2>Weather module</h2><p>Example decoration target</p></section><section class="calendar"><h2>Calendar module</h2><p>Example decoration target</p></section></div><pre id="error"></pre><script>
+window.Module={register(name,definition){window.definition=definition;}};
+async function boot(){
+ const name="MMM-MischiefEconomyTicker",host=document.getElementById('preview-host'),base='../';
+ await script(base+name+'.js');
+ const d=window.definition,instance={...d,config:structuredClone(d.defaults),identifier:'preview',data:{position:'top_left'},file:p=>base+p,sendSocketNotification(){},updateDom(){if(instance.root?.isConnected)return;host.replaceChildren(instance.getDom());}};
+ for(const file of instance.getStyles?.()||[]){const link=document.createElement('link');link.rel='stylesheet';link.href=file;document.head.append(link);}
+ for(const file of instance.getScripts?.()||[])await script(file);
+ if(name.includes('Holiday')){instance.config.holidayMode='halloween';document.querySelector('#anchors').hidden=false;}
+ if(name.includes('LocalConditions')){instance.config.locationConfigured=true;instance.config.latitude=40;instance.config.longitude=-74;}
+ if(name.includes('SystemWatch')||name.includes('EconomyTicker'))instance.config.placement='region';
+ if(name.includes('QuietSky'))instance.config.brightness=65;
+ instance.start();
+ const now=Date.now();
+ if(name.includes('HomeCheck'))instance.socketNotificationReceived('HOME_DATA',{version:1,observedAt:now,internet:{ok:true,ms:82}});
+ if(name.includes('SystemWatch'))instance.socketNotificationReceived('WATCH_DATA',{remote:null,local:{observedAt:now,checks:[{id:'pi-cpu',name:'Mirror CPU',level:'green',detail:'12% used'},{id:'pi-memory',name:'Mirror memory',level:'green',detail:'34% used'},{id:'pi-disk',name:'Storage',level:'green',detail:'28% used'},{id:'pi-temp',name:'Temperature',level:'green',detail:'48°C'}],metrics:{uptime:86400}}});
+ if(name.includes('LocalConditions'))instance.socketNotificationReceived('CONDITIONS_DATA',{air:{fetchedAt:now,reading:{value:38,category:'Good',area:'Example reporting area',miles:8,observedAt:now}},alerts:{checkedAt:now,items:[]}});
+ if(name.includes('EconomyTicker'))instance.socketNotificationReceived('ECON_DATA',{warning:false,snapshot:{version:1,fetchedAt:now,indicators:[{id:'UNRATE',label:'Unemployment',value:4.1,date:'2026-10-01',basis:'monthly rate',source:'https://fred.stlouisfed.org/series/UNRATE'},{id:'CPIAUCNS',label:'Inflation',value:2.5,date:'2026-10-01',basis:'year over year',source:'https://fred.stlouisfed.org/series/CPIAUCNS'},{id:'DFF',label:'Fed funds',value:4.25,date:'2026-11-01',basis:'effective rate',source:'https://fred.stlouisfed.org/series/DFF'}]}});
+ host.className='module '+name;host.replaceChildren(instance.getDom());instance.notificationReceived?.('DOM_OBJECTS_CREATED');
+ document.documentElement.dataset.previewStatus='ready';
+}
+function script(src){return new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=()=>reject(Error('Could not load '+src));document.head.append(s);});}
+boot().catch(e=>{document.documentElement.dataset.previewStatus='error';document.getElementById('error').textContent=e.stack;});
+</script></body></html>

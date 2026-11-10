@@ -1,0 +1,11 @@
+node_modules/
+coverage/
+*.log
+.env
+.env.*
+!.env.example
+config.local.*
+*.pending
+__pycache__/
+*.pyc
+.DS_Store
