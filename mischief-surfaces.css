@@ -1,0 +1,11 @@
+/* Mirror Mischief earthy card surfaces. Standard MagicMirror classes; no script required. */
+.mischief-earth-moss{--mischief-earth-bg:#1e3025;--mischief-earth-line:#52654d}
+.mischief-earth-sage{--mischief-earth-bg:#2b3930;--mischief-earth-line:#71816b}
+.mischief-earth-clay{--mischief-earth-bg:#3c2c26;--mischief-earth-line:#80614f}
+.mischief-earth-sand{--mischief-earth-bg:#393327;--mischief-earth-line:#82795a}
+.mischief-earth-walnut{--mischief-earth-bg:#30271f;--mischief-earth-line:#6d5741}
+.mischief-earth-slate{--mischief-earth-bg:#273236;--mischief-earth-line:#607577}
+.mischief-earth-peat{--mischief-earth-bg:#24241f;--mischief-earth-line:#62634e}
+.module[class*="mischief-earth-"]:not(.MMM-MCHF-Rite):not(.MMM-MCHF-Atmos):not(.MMM-MCHF-Astra) .module-content{background:var(--mischief-earth-bg);border:1px solid var(--mischief-earth-line);border-radius:14px;padding:14px 16px;box-sizing:border-box;box-shadow:0 8px 24px #0003;color:#e9e6dc}
+.module[class*="mischief-earth-"]:not(.MMM-MCHF-Rite):not(.MMM-MCHF-Atmos):not(.MMM-MCHF-Astra) .module-content>:is(section,div):not(.mischief-scene-overlay):not(.mischief-atmos){background:var(--mischief-earth-bg)!important;border-color:var(--mischief-earth-line)!important;color:#e9e6dc}
+@media(prefers-reduced-motion:reduce){.animate__animated{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important}}

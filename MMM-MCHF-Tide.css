@@ -1,0 +1,19 @@
+.MMM-MCHF-Tide .econ-band{position:fixed;bottom:6px;left:12px;right:12px;height:32px;z-index:11;display:flex;align-items:center;gap:12px;box-sizing:border-box;overflow:hidden;padding:0 10px;border:1px solid #35483f;border-radius:7px;background:rgba(12,25,18,.97);color:#edf7f2;font:11px/1.3 "Segoe UI",Arial,sans-serif;font-variant-numeric:tabular-nums}
+.MMM-MCHF-Tide .econ-label{flex-shrink:0;letter-spacing:1.2px;font-size:9px;font-weight:700;color:#f4c767;border-right:1px solid #35483f;padding-right:12px}
+.MMM-MCHF-Tide .econ-window{overflow:hidden;min-width:0;flex:1}.MMM-MCHF-Tide .econ-track{display:flex;width:max-content;animation:economy-scroll 90s linear infinite;will-change:transform}.MMM-MCHF-Tide .econ-group{display:flex;flex-shrink:0;gap:24px;padding-right:24px;align-items:center}
+.MMM-MCHF-Tide .econ-item{display:flex;align-items:baseline;gap:7px;white-space:nowrap}.MMM-MCHF-Tide .econ-name{color:#b8c9bf;font-size:10px}.MMM-MCHF-Tide .econ-item strong{font-size:13px;font-weight:600;color:#e8d18c}.MMM-MCHF-Tide .econ-item small{font-size:9px;color:#91aa9a}.MMM-MCHF-Tide .econ-note{font-size:9px;color:#f4c767;white-space:nowrap}
+@keyframes economy-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Reserve a separate row below System Watch; native module settings still own its margin. */
+body:has(.econ-place-bottom) :is(.MMM-SystemWatch,.MMM-MCHF-Vigil) .sw-panel.sw-placement-bottom{bottom:calc(var(--sw-margin-y,6px) + var(--econ-reserve,38px))}
+body:has(.econ-place-bottom) .region.bottom.center .clock.mirror-clock-clearance{transform:translateY(-70px)}
+@media(prefers-reduced-motion:reduce){.MMM-MCHF-Tide .econ-track{animation:none}.MMM-MCHF-Tide .econ-window{overflow-x:auto}}
+.MMM-MCHF-Tide .econ-band{left:var(--econ-gap-x,12px);right:var(--econ-gap-x,12px);bottom:var(--econ-gap-y,6px);background:rgba(12,25,18,var(--econ-alpha,.97));transform:translate(var(--econ-offset-x,0px),var(--econ-offset-y,0px))}
+.MMM-MCHF-Tide .econ-band.econ-place-region{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:min(var(--econ-width,600px),calc(100vw - 24px));max-width:100%}
+.MMM-MCHF-Tide .econ-band.econ-place-top{top:var(--econ-gap-y,6px);bottom:auto}
+.MMM-MCHF-Tide .econ-band.econ-place-top-left,.MMM-MCHF-Tide .econ-band.econ-place-top-right{top:var(--econ-gap-y,6px);bottom:auto}
+.MMM-MCHF-Tide .econ-band.econ-place-top-left,.MMM-MCHF-Tide .econ-band.econ-place-bottom-left,.MMM-MCHF-Tide .econ-band.econ-place-center-left{left:var(--econ-gap-x,12px);right:auto}
+.MMM-MCHF-Tide .econ-band.econ-place-top-right,.MMM-MCHF-Tide .econ-band.econ-place-bottom-right,.MMM-MCHF-Tide .econ-band.econ-place-center-right{right:var(--econ-gap-x,12px);left:auto}
+.MMM-MCHF-Tide .econ-band.econ-place-center-left,.MMM-MCHF-Tide .econ-band.econ-place-center-right{top:50%;bottom:auto;transform:translate(var(--econ-offset-x,0px),calc(-50% + var(--econ-offset-y,0px)))}
+.MMM-MCHF-Tide .econ-band.econ-place-top-left,.MMM-MCHF-Tide .econ-band.econ-place-top-right,.MMM-MCHF-Tide .econ-band.econ-place-bottom-left,.MMM-MCHF-Tide .econ-band.econ-place-bottom-right,.MMM-MCHF-Tide .econ-band.econ-place-center-left,.MMM-MCHF-Tide .econ-band.econ-place-center-right{width:min(var(--econ-width,600px),calc(100vw - 24px))}
+.MMM-MCHF-Tide .econ-text-large .econ-name{font-size:11px}.MMM-MCHF-Tide .econ-text-large .econ-item strong{font-size:15px}.MMM-MCHF-Tide .econ-text-large .econ-item small{font-size:10px}
+.MMM-MCHF-Tide .econ-window{mask-image:linear-gradient(to right,transparent,#000 8px,#000 calc(100% - 8px),transparent)}.MMM-MCHF-Tide .econ-band:hover .econ-track{animation-play-state:paused}

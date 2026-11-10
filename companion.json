@@ -1,12 +1,10 @@
 {
   "schemaVersion": 1,
-  "module": "MMM-MischiefEconomyTicker",
-  "title": "Mischief Economy Ticker",
+  "module": "MMM-MCHF-Tide",
+  "title": "MCHF-Tide",
   "recommendedPosition": "bottom_bar",
   "singleInstance": true,
-  "requires": [
-    "python3"
-  ],
+  "requires": [],
   "notes": "All supported settings are literal defaults in the module entry. No companion is required. This manifest documents the contract; current MMM-Config discovers defaults from JavaScript.",
   "supportedSettings": [
     "scrollSeconds",

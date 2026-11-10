@@ -6,7 +6,7 @@ function fixture(){
     set textContent(value){this.text=String(value);}get textContent(){return this.text+this.children.map(c=>c.textContent).join(' ');}
   }
   const document={documentElement:new Element('html'),createElement:tag=>new Element(tag)};let definition;
-  vm.runInNewContext(fs.readFileSync(require.resolve('../MMM-MischiefEconomyTicker.js'),'utf8'),{document,Module:{register(name,value){definition=value;}}});
+  vm.runInNewContext(fs.readFileSync(require.resolve('../MMM-MCHF-Tide.js'),'utf8'),{document,Module:{register(name,value){definition=value;}}});
   const instance={...definition,config:{...definition.defaults},data:{position:'bottom_bar'},warning:false,lastStale:false,snapshot:{fetchedAt:Date.now(),indicators:[{id:'PAYEMS',label:'Payroll jobs',value:165000,date:'2026-10-01',basis:'monthly change',source:'https://fred.stlouisfed.org/series/PAYEMS'},{id:'A191RL1Q225SBEA',label:'Real GDP growth',value:3.4,date:'2026-07-01',basis:'annualized',source:'https://fred.stlouisfed.org/series/A191RL1Q225SBEA'}]}};
   return {instance,document,all:root=>[root,...root.children.flatMap(function walk(e){return[e,...e.children.flatMap(walk)];})]};
 }

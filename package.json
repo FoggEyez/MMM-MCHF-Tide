@@ -1,6 +1,6 @@
 {
-  "name": "mmm-mischiefeconomyticker",
-  "version": "0.1.0",
+  "name": "mmm-mchf-tide",
+  "version": "0.2.0",
   "description": "A configurable ticker of official US economic releases from FRED.",
   "license": "MIT",
   "author": "FoggEyez",
@@ -14,12 +14,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/FoggEyez/MMM-MischiefEconomyTicker.git"
+    "url": "https://github.com/FoggEyez/MMM-MCHF-Tide.git"
   },
   "bugs": {
-    "url": "https://github.com/FoggEyez/MMM-MischiefEconomyTicker/issues"
+    "url": "https://github.com/FoggEyez/MMM-MCHF-Tide/issues"
   },
-  "homepage": "https://github.com/FoggEyez/MMM-MischiefEconomyTicker#readme",
+  "homepage": "https://github.com/FoggEyez/MMM-MCHF-Tide#readme",
   "engines": {
     "node": ">=22"
   },

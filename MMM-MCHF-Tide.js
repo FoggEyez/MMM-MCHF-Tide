@@ -1,8 +1,8 @@
 /* global Module */
-Module.register('MMM-MischiefEconomyTicker',{
+Module.register('MMM-MCHF-Tide',{
  requiresVersion:'2.38.0',
   defaults:{scrollSeconds:90,showPeriods:true,placement:'auto',panelWidth:600,horizontalMargin:12,verticalMargin:6,offsetX:0,offsetY:0,textSize:'normal',backgroundOpacity:97},
-  getStyles(){return [this.file('MMM-MischiefEconomyTicker.css')];},
+  getStyles(){return [this.file('mischief-surfaces.css'),this.file('MMM-MCHF-Tide.css')];},
   start(){this.snapshot=null;this.warning=false;this.lastStale=false;this.sendSocketNotification('ECON_START');this.timer=setInterval(()=>{const stale=!!this.snapshot&&Date.now()-this.snapshot.fetchedAt>172800000;if(stale!==this.lastStale){this.lastStale=stale;this.updateDom(0);}},60000);},
   suspend(){clearInterval(this.timer);},
   resume(){this.start();},

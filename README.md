@@ -1,10 +1,10 @@
-# MMM-MischiefEconomyTicker
+# MMM-MCHF-Tide
 
 A configurable ticker of official US economic releases from FRED.
 
 Part of [Mirror Mischief](https://github.com/FoggEyez/Mirror-Mischief). Install and configure manually, or use the optional companion.
 
-![MMM-MischiefEconomyTicker rendered example](docs/screenshot.png)
+![MMM-MCHF-Tide rendered example](docs/screenshot.png)
 
 Screenshot uses the actual module renderer in an isolated preview. Network/health/economy readings are labelled synthetic demonstration data, not live readings.
 
@@ -14,16 +14,16 @@ Requires a working MagicMirror² installation, Node.js 22 or newer, and a curren
 
 ```sh
 cd ~/MagicMirror/modules
-git clone https://github.com/FoggEyez/MMM-MischiefEconomyTicker.git
+git clone https://github.com/FoggEyez/MMM-MCHF-Tide.git
 ```
 
-No npm runtime dependencies or install scripts. Python 3 must be available as python3.
+No npm runtime dependencies or install scripts. No extra services are required.
 
 Add this to the modules array in config/config.js, then restart MagicMirror²:
 
 ```js
 {
-  module: "MMM-MischiefEconomyTicker",
+  module: "MMM-MCHF-Tide",
   position: "bottom_bar",
   config: {}
 }
@@ -31,7 +31,7 @@ Add this to the modules array in config/config.js, then restart MagicMirror²:
 
 ## Customize
 
-Install Python 3 (on Debian/Raspberry Pi OS: `sudo apt install python3`) before enabling. The helper invokes python3 with no pip packages. Shows US unemployment, inflation, payroll changes, GDP growth and interest rates when available. Period labels identify release dates; these are reported releases, not live market prices. `scrollSeconds` is clamped to 30–240. `placement: auto` follows native regions; fixed anchors deliberately override it. Saved data is retained after failed requests, labelled saved or overdue. The regenerable cache is ~/.cache/MMM-MischiefEconomyTicker/economy.json. Weather themes and owner layout installers are not dependencies.
+Install Python 3 (on Debian/Raspberry Pi OS: `sudo apt install python3`) before enabling. The helper invokes python3 with no pip packages. Shows US unemployment, inflation, payroll changes, GDP growth and interest rates when available. Period labels identify release dates; these are reported releases, not live market prices. `scrollSeconds` is clamped to 30–240. `placement: auto` follows native regions; fixed anchors deliberately override it. Saved data is retained after failed requests, labelled saved or overdue. The regenerable cache is ~/.cache/MMM-MCHF-Tide/economy.json. Weather themes and owner layout installers are not dependencies.
 
 All supported settings are visible as literal defaults for generated settings editors.
 

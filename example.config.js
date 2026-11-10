@@ -1,5 +1,5 @@
 module.exports = {
-  module: "MMM-MischiefEconomyTicker",
+  module: "MMM-MCHF-Tide",
   position: "bottom_bar",
   config: {}
 };

@@ -1,6 +1,6 @@
 const NodeHelper=require('node_helper');
 const fs=require('node:fs/promises'),path=require('node:path'),os=require('node:os'),{execFile}=require('node:child_process');
-const CACHE=path.join(os.homedir(),'.cache/MMM-MischiefEconomyTicker/economy.json');
+const CACHE=path.join(os.homedir(),'.cache/MMM-MCHF-Tide/economy.json');
 const valid=data=>data?.version===1&&Number.isFinite(data.fetchedAt)&&data.fetchedAt<=Date.now()+30000&&Array.isArray(data.indicators)&&data.indicators.length>=4&&data.indicators.length<=6&&data.indicators.every(row=>typeof row.label==='string'&&Number.isFinite(row.value)&&/^\d{4}-\d{2}-\d{2}$/.test(row.date));
 module.exports=NodeHelper.create({
   start(){this.started=false;this.stopped=false;this.snapshot=null;this.warning=false;},
