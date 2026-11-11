@@ -1,6 +1,6 @@
 {
   "name": "mmm-mchf-tide",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A configurable ticker of official US economic releases from FRED.",
   "license": "MIT",
   "author": "FoggEyez",

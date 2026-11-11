@@ -1,14 +1,15 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 function fixture(){
   class Element{
-    constructor(tag){this.tag=tag;this.children=[];this.attributes={};this.style={setProperty(key,value){this[key]=value;}};this.className='';this.text='';}
+    constructor(tag){this.tag=tag;this.children=[];this.attributes={};this.style={setProperty(key,value){this[key]=value;}};this.className='';this.text='';this.isConnected=false;}
     append(...children){this.children.push(...children);}setAttribute(key,value){this.attributes[key]=String(value);}
     set textContent(value){this.text=String(value);}get textContent(){return this.text+this.children.map(c=>c.textContent).join(' ');}
   }
-  const document={documentElement:new Element('html'),createElement:tag=>new Element(tag)};let definition;
-  vm.runInNewContext(fs.readFileSync(require.resolve('../MMM-MCHF-Tide.js'),'utf8'),{document,Module:{register(name,value){definition=value;}}});
+  const document={documentElement:new Element('html'),createElement:tag=>new Element(tag)},observers=[];let definition;
+  class ResizeObserver{constructor(callback){this.callback=callback;observers.push(this);}disconnect(){this.target=null;}observe(target){this.target=target;}}
+  vm.runInNewContext(fs.readFileSync(require.resolve('../MMM-MCHF-Tide.js'),'utf8'),{document,ResizeObserver,clearInterval(){},Module:{register(name,value){definition=value;}}});
   const instance={...definition,config:{...definition.defaults},data:{position:'bottom_bar'},warning:false,lastStale:false,snapshot:{fetchedAt:Date.now(),indicators:[{id:'PAYEMS',label:'Payroll jobs',value:165000,date:'2026-10-01',basis:'monthly change',source:'https://fred.stlouisfed.org/series/PAYEMS'},{id:'A191RL1Q225SBEA',label:'Real GDP growth',value:3.4,date:'2026-07-01',basis:'annualized',source:'https://fred.stlouisfed.org/series/A191RL1Q225SBEA'}]}};
-  return {instance,document,all:root=>[root,...root.children.flatMap(function walk(e){return[e,...e.children.flatMap(walk)];})]};
+  return {instance,document,observers,all:root=>[root,...root.children.flatMap(function walk(e){return[e,...e.children.flatMap(walk)];})]};
 }
 test('ticker preserves economic units, periods and accessible duplicate handling',()=>{
   const {instance,all}=fixture(),root=instance.getDom(),nodes=all(root);
@@ -25,4 +26,9 @@ test('ticker follows native placement or explicit anchors with bounded dimension
 });
 test('ticker distinguishes unavailable, saved and overdue data',()=>{
   const {instance}=fixture();instance.warning=true;assert.ok(instance.getDom().textContent.includes('Saved readings'));instance.lastStale=true;assert.ok(instance.getDom().textContent.includes('Refresh overdue'));instance.snapshot=null;assert.ok(instance.getDom().textContent.includes('unavailable'));
+});
+
+test('a taller static ticker reserves its measured height and releases observation when suspended',()=>{
+ const {instance,document,observers}=fixture(),band=instance.getDom();band.isConnected=true;band.getBoundingClientRect=()=>({height:146.2});observers[0].callback();assert.equal(document.documentElement.style['--econ-reserve'],'153px');
+ const previous=band,next=instance.getDom();assert.equal(observers[0].target,next);assert.notEqual(next,previous);instance.suspend();assert.equal(observers[0].target,null);
 });

@@ -6,7 +6,7 @@
 /* Reserve a separate row below System Watch; native module settings still own its margin. */
 body:has(.econ-place-bottom) :is(.MMM-SystemWatch,.MMM-MCHF-Vigil) .sw-panel.sw-placement-bottom{bottom:calc(var(--sw-margin-y,6px) + var(--econ-reserve,38px))}
 body:has(.econ-place-bottom) .region.bottom.center .clock.mirror-clock-clearance{transform:translateY(-70px)}
-@media(prefers-reduced-motion:reduce){.MMM-MCHF-Tide .econ-track{animation:none}.MMM-MCHF-Tide .econ-window{overflow-x:auto}}
+@media(prefers-reduced-motion:reduce){.MMM-MCHF-Tide .econ-band{height:auto;min-height:32px;display:flex;flex-wrap:wrap;padding:8px 10px;gap:7px 12px;overflow:visible}.MMM-MCHF-Tide .econ-band .econ-window{flex:1 1 100%;width:100%;overflow:visible;mask-image:none}.MMM-MCHF-Tide .econ-track{display:block;width:100%;animation:none;transform:none;will-change:auto}.MMM-MCHF-Tide .econ-group{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(160px,100%),1fr));gap:8px 14px;width:100%;padding:0}.MMM-MCHF-Tide .econ-group[aria-hidden=true]{display:none}.MMM-MCHF-Tide .econ-item{flex-wrap:wrap;white-space:normal;gap:2px 7px;min-width:0}.MMM-MCHF-Tide .econ-item small{flex-basis:100%}.MMM-MCHF-Tide .econ-note{white-space:normal}}
 .MMM-MCHF-Tide .econ-band{left:var(--econ-gap-x,12px);right:var(--econ-gap-x,12px);bottom:var(--econ-gap-y,6px);background:rgba(12,25,18,var(--econ-alpha,.97));transform:translate(var(--econ-offset-x,0px),var(--econ-offset-y,0px))}
 .MMM-MCHF-Tide .econ-band.econ-place-region{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:min(var(--econ-width,600px),calc(100vw - 24px));max-width:100%}
 .MMM-MCHF-Tide .econ-band.econ-place-top{top:var(--econ-gap-y,6px);bottom:auto}

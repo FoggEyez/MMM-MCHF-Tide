@@ -1,5 +1,5 @@
-# 0.2.0 public preview
+# 0.2.1 public preview
 
-Adopts the shorter owner-approved MMM-MCHF-Tide name and shared earthy card surface styles. Back up the existing folder/configuration; install the newly named folder and change its module entry together. GitHub redirects do not rename an installed folder.
+Reduced-motion static grid exposes every indicator and reserves its measured height; public identity updated.
 
-Manual configuration and the optional Mirror Mischief companion are supported. Independent physical-device coverage and performance depend on the mirror setup; see VALIDATION.md.
+Includes updated migration and troubleshooting guidance. Manual configuration remains supported; the companion is optional. Preview status and device/provider limitations remain documented in VALIDATION.md.
